@@ -5,7 +5,7 @@ require('coc-config')
 require('lualine').setup()
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = {"javascript"},
   context_commentstring = {
     enable = true
   },
@@ -18,6 +18,8 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+require('nvim-autopairs').setup{}
+
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -25,6 +27,9 @@ return require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter' 
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'windwp/nvim-autopairs'
+  use 'dracula/vim'
+  use 'rose-pine/neovim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -33,10 +38,5 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {
-    "blackCauldron7/surround.nvim",
-    config = function()
-      require"surround".setup {mappings_style = "surround"}
-    end
-  }
+  use 'tpope/vim-surround'
 end)
